@@ -1,0 +1,49 @@
+<html>
+<head>
+<title></title>
+{
+          for (var i = 0; i < 4; i++) {
+               var label = document.createElement('label');
+               var br = document.createElement('br');
+               //var alabel = document.getElementById("<%=Label3.ClientID %>");
+            var alabel = document.getElementById('div1');
+               var last = alabel[alabel.length - 1];
+               label.htmlFor = "lbl"+i;
+               label.appendChild(Createcheckbox('test' + i));
+               label.appendChild(document.createTextNode('RAJ1' + i));
+               label.appendChild(br);
+               //document.getElementById("<%=Label3.ClientID %>").appendChild(label);
+            document.getElementById('div1').appendChild(label);
+                }
+}
+function Createcheckbox(chkboxid) {
+           var checkbox = document.createElement('input');
+           checkbox.type = "checkbox";
+           /*checkbox.onclick = function(){
+            this.onclick = null;
+            var label = this.parentNode;
+            label.removeChild(this);
+            label.parentNode.removeChild(label);
+           };*/
+           checkbox.id = chkboxid;
+           checkbox.value = chkboxid;
+           return checkbox;
+       }
+function getValues(divId){
+   var boxes = document.getElementById(divId).getElementsByTagName('input'), vals = [];
+   for(var i = 0; i < boxes.length; ++i){
+      vals.push(boxes[i].value);
+   }
+   alert(vals.join('\n'));
+}
+</script>
+</head>
+<body>
+<form>
+<input type="button" id="btncreate" value="Create" onclick="createchkboxes()"/>
+<input type="button" id="btngetvalues" value="Get values" onclick="getValues('div1');"/>
+<Div id='div1'>
+</div>
+</form>
+</body>
+</html>

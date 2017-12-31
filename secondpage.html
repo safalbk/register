@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+body {
+    background-color: lightblue;
+}
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid green;
+    border-radius: 4px;
+}
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid green;
+    border-radius: 4px;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+</style>
+</head>
+<body>
+
+<p>ATTENDENCE REGISTER </p>
+
+<form action="login.php" method="post">
+  
+  
+  <label for="department">Department</label>
+  <select name="department"> 
+<option value="Maths" selected>CHE</option> 
+<option value="Physics">EC</option> 
+<option value="Physics">IE</option> 
+<option value="Physics">MECHANICAL</option> 
+</select>
+<label for="sem">sem</label>
+<select name="sem"> 
+<option value="1" selected>1</option> 
+<option value="2">2</option>    
+<option value="3">3</option> 
+<option value="4">4</option> 
+<option value="5">5</option> 
+<option value="6">6</option> 
+</select>
+<br>
+<br>
+<label for="subject">Subject</label>
+<input type="text" id="subject" name="subject">
+ 
+<input type="submit" value="Submit">
+<p><a href="http://localhost:8080/register/edit.html">OPTIONS</a></p>
+
+
+</form>
+
+</body>
+</html>

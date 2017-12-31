@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+body {
+    background-color: lightblue;
+}
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid green;
+    border-radius: 4px;
+}
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid green;
+    border-radius: 4px;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+</style>
+</head>
+<body>
+
+<p>registration</p>
+
+<form action="phpstudentadd.php" method="post">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name">
+ <br>
+ <label for="rollno">Rollno</label>
+  <input type="text" id="rollno" name="rollno">
+ <br>
+<label for="regno">Reg no:</label>
+<input type="text" id="regno" name="regno">
+ <br>
+<label for="sem">Sem</label>
+  <input type="text" id="sem" name="sem">
+ <br>
+   <label for="department">Department</label>
+  <input type="text" id="department" name="department">
+ <br>
+<input type="submit" value="Submit">
+<br>
+	    <a href="edit.html">ACCOUNT SETTINGS</a>
+
+
+</form>
+
+</body>
+</html>
