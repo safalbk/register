@@ -23,16 +23,20 @@ $submit=1;
      
      
    }
-   
- 
+$sql5 = "DELETE  FROM `export` WHERE '1' ";
+$records=mysqli_query($con,$sql5);
+   echo "<h1>Attendence of ".$Smonth."</h1>";
+
 ?>
 
-<!DOCTYPE html>
+
 <html>
+
 <body>
 
 <form >
-  <table  border="1" cellpadding="5" cellspacing="5">
+
+  <table id="attendencesheet" border="1" cellpadding="5" cellspacing="5">
                     <thead>
                         <tr>
                             <th>ROLL NO</th>
@@ -43,47 +47,57 @@ $submit=1;
                    <tbody>
 <?php
 
- 
-$sql = "SELECT * FROM `attendence` WHERE `datetime` LIKE \"".$Smonth."\" '%' AND `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\"";
+ $tper=0;
+ $sql = "SELECT * FROM `students` WHERE  `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\"";
 $records=mysqli_query($con,$sql);
-     $stack = array();
-	$num=0;
+     
 
 	while($details=mysqli_fetch_assoc($records))
 	{
-	  $a1= $details['1'];
-  $a2= $details['2'];
-  $a3= $details['3'];
-  $a4= $details['4'];
+$sql2 = "SELECT * FROM `attendence` WHERE   `datetime` LIKE \"".$Smonth."\" '%' AND `name` = \"".$details['name']."\" AND `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\"";
+$records2=mysqli_query($con,$sql2);
+     $stack = array();
+	$num=0;
+$tper=0;
+
+
+
+	while($details2=mysqli_fetch_assoc($records2))
+	{
+	  $a1= $details2['1'];
+  $a2= $details2['2'];
+  $a3= $details2['3'];
+  $a4= $details2['4'];
   $total= ($a1)+($a2)+($a3)+($a4);
  $per =($total/4)*100;
-     array_push($stack, "$per");
+ $tper=$tper+ $per;
+ 
+
+
+     //array_push($stack, "$per");
 	 $num=$num+1;
 	 
 	}
-	
-	
-$sql = "SELECT * FROM `attendence` WHERE `datetime` LIKE \"".$Smonth."\"'%' AND `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\"";
-$records=mysqli_query($con,$sql);
-	
-	$xx=0;
-	while($details=mysqli_fetch_assoc($records)){
-echo '<tr>';
+
+$tper=($tper/($num*100))*100;
+$rr=$details['rollno'];
+$nn=$details['name'];
+$sql5="INSERT INTO export (rollno,name,percent) VALUES ('$rr','$nn','$tper')";
+$dada=mysqli_query($con,$sql5);
+
+	echo '<tr>';
 echo '<td>'.$details['rollno'].'</td>';
 echo '<td>'.$details['name'].'</td>';
-echo '<td>'.$stack[$xx]."%".'</td>';
+echo '<td>'.$tper."%".'</td>';
+echo '</tr>';
+}
+ ?>
+     <a href="http://localhost:8080/register/firstpage.html"> HOME</a>
+<br><br>
 
-
-
-  echo '</tr>';
-$xx++;
-	
-	}	
-	
-	
-  ?>
-   
-                  </tbody>
+    <a href="http://localhost:8080/register/exportattendence.php">EXPORT TO EXCEL</a>
+ 
+ </tbody>
 </table>
 </form>
 </body>

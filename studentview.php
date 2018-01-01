@@ -87,7 +87,7 @@ SELECT MONTH AND YEAR<br>
 <br>
 <input type="submit" value="Submit">
 <br>
-	    <a href="edit.html">ACCOUNT SETTINGS</a>
+	    <a href="http://localhost:8080/register/edit.html">ACCOUNT SETTINGS</a>
 
 </form>
 
