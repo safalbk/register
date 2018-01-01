@@ -30,7 +30,11 @@ $details=mysqli_fetch_array($result);
 if(!($details>0))
 {
 	$atname = $_POST['atname'];
-
+  if(empty($atname))
+{
+ header("refresh:2; url=attendencepage.php");
+  exit;
+}
 $N = count($atname);
 for($i=0; $i < $N; $i++)
 {
@@ -55,7 +59,8 @@ else//......................................else main
 	$atname = $_POST['atname'];
   if(empty($atname))
 {
- 
+ header("refresh:2; url=attendencepage.php");
+  exit;
 }
 else
 {
@@ -64,10 +69,10 @@ for($i=0; $i < $N; $i++)
 {
 $sql3 = "UPDATE `attendence` SET `$Period`=\"1\" WHERE `name`=\"".$atname[$i]."\"";
   mysqli_query($con,$sql3);
- echo $atname[$i];
 }
 }
- echo "attendence marked";
+ 
+ echo"<p >ATTENDENCE MARKED</p>";
   header("refresh:2; url=attendencepage.php");
 exit;
 }

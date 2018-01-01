@@ -14,7 +14,7 @@ if(!mysqli_select_db($con,'register'))
 ?>
 <html>
 <head>
-  <p align="right"><a href="firstpage.html">LOG OUT</a></p> 
+  <p align="right"><a href="http://localhost:8080/register/firstpage.html">LOG OUT</a></p> 
 
 <h1>ATTENDENCE REGISTER</h1>
 <style>
@@ -98,7 +98,7 @@ echo "<option value=".$details['department'].">".$details['department']."</optio
 <br>
 <input type="submit" value="Submit">
 <br>
-<a href="edit.html">ACCOUNT SETTINGS</a>
+<a href="http://localhost:8080/register/edit.html">ACCOUNT SETTINGS</a>
 </form>
 
 <?php
@@ -165,7 +165,7 @@ echo '<td>'.$details['name'].'</td>';
  ?> 
 <input type="submit" value="Submit attendence">
 <br>
-<a href="edit.html">ACCOUNT SETTINGS</a>
+<a href="http://localhost:8080/register/edit.html">ACCOUNT SETTINGS</a>
 
 </form>
 

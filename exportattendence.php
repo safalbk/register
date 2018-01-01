@@ -4,9 +4,9 @@ session_start();
   $Sem = $_SESSION['sem'] ;
    $Period = $_SESSION['period'] ;
 $conn = new mysqli('localhost', 'root', '');  
-mysqli_select_db($conn, 'EmployeeDB');  
+mysqli_select_db($conn, 'register');  
   
-$setSql = "SELECT `ur_Id`,`ur_username`,`ur_password` FROM `tbl_user`";  
+$setSql = "SELECT * FROM `export`";  
 $setRec = mysqli_query($conn, $setSql);  
   
 $columnHeader = '';  
