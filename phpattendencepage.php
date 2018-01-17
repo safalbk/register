@@ -38,7 +38,8 @@ if(!($details>0))
 $N = count($atname);
 for($i=0; $i < $N; $i++)
 {
-	
+	$sql9 = "SELECT `rollno`,`name`, `regno` FROM `students` WHERE `name` =\"".$atname[$i]."\" AND `department` =\"".$Department."\" AND `sem`=\"".$Sem."\"";
+
 $sql2 = "SELECT `rollno`, `regno` FROM `students` WHERE `name` =\"".$atname[$i]."\" AND `department` =\"".$Department."\" AND `sem`=\"".$Sem."\"";
 $records=mysqli_query($con,$sql2);
 $rollreg=mysqli_fetch_array($records);
@@ -48,7 +49,8 @@ $one=1;
 $sql3 = "INSERT INTO `attendence` (`rollno`,`regnno`, `name`, `$Period`, `department`, `sem`, `datetime`) VALUES (\"".$rollreg['rollno']."\", \"".$rollreg['regno']."\", \"".$atname[$i]."\",\"".$one."\", \"".$Department."\", \"".$Sem."\",\"".$Date."\")";    
   mysqli_query($con,$sql3);
   
-}
+} echo"<p >ATTENDENCE MARKED</p>";
+
   header("refresh:2; url=attendencepage.php");
   exit;
 

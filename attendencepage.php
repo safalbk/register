@@ -1,4 +1,5 @@
 <?php
+
 $con =mysqli_connect('127.0.0.1','root','');
 if(!$con)
 {
@@ -8,19 +9,33 @@ if(!mysqli_select_db($con,'register'))
 {
 	echo 'database not selected';
 }
-
-
-
+ session_start();
+$tnm = $_SESSION['tname'] ;
+ echo "<font color='blue' size='5'>$tnm</font>";
 ?>
 <html>
 <head>
-  <p align="right"><a href="http://localhost:8080/register/firstpage.html">LOG OUT</a></p> 
+&nbsp;&nbsp;
+<a  style="color: red" href="firstpage.php">LOG OUT</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+  	    <a style="color: green" href="atstview.php">STUDENTS LIST</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  
 
-<h1>ATTENDENCE REGISTER</h1>
+  <a style="color: green" href="atatview.php">ATTENDENCE VIEW</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br>
+<h1>ATTENDENCE REGISTER</h1> 
+  <p align="right">  
+
+  
+
+
+  </p> 
+
 <style>
  
 
 body {
+	margin: 15px;
     background-color: lightblue;
 	}
 input[type=text] {
@@ -56,22 +71,7 @@ input[type=submit] {
 <form action="#" method="post">
   
   
-  <label for="department">DEPARTMENT</label>
-  <select name="department"> 
- <?php
-  $sql = "SELECT * FROM `department` ";
-$records=mysqli_query($con,$sql);
-	
-	while($details=mysqli_fetch_assoc($records)){
-		$x=1;
-echo "<option value=".$details['department'].">".$details['department']."</option> ";
 
-
-	
-	}	
-	
-  ?>
-</select>
 <br>
 <br>
 
@@ -98,14 +98,18 @@ echo "<option value=".$details['department'].">".$details['department']."</optio
 <br>
 <input type="submit" value="Submit">
 <br>
-<a href="http://localhost:8080/register/edit.html">ACCOUNT SETTINGS</a>
 </form>
 
 <?php
-   $option = isset($_POST['department']) ? $_POST['department'] : false;
+
+$Deparment = $_SESSION['department'] ;
+	 
+
+
+ 
+   $option = isset($_POST['sem']) ? $_POST['sem'] : false;
    if ($option) {
       //echo htmlentities($_POST['department'], ENT_QUOTES, "UTF-8");
-	  $Deparment=$_POST['department'];
 	  	  $Sem=$_POST['sem'];
 	  $Period=$_POST['period'];
 $submit=1;
@@ -158,14 +162,12 @@ echo '<td>'.$details['name'].'</td>';
  </tbody>
   </table>
  <?php
- session_start();
  $_SESSION['department'] = $Deparment;
   $_SESSION['sem'] = $Sem;
    $_SESSION['period'] = $Period;
  ?> 
 <input type="submit" value="Submit attendence">
 <br>
-<a href="http://localhost:8080/register/edit.html">ACCOUNT SETTINGS</a>
 
 </form>
 

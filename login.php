@@ -1,4 +1,6 @@
 <?php
+include "details.php";
+
 $con =mysqli_connect('127.0.0.1','root','');
 if(!$con)
 {
@@ -11,7 +13,12 @@ if(!mysqli_select_db($con,'register'))
 
 $Name =$_POST['name'];
 $Password =$_POST['password'];
-				
+				$Department =$_POST['department'];
+$dep = $Department;
+session_start();
+$_SESSION['department'] = $Department;
+$_SESSION['tname'] = $Name;
+
 
 if(empty(($Name)&&($Password)))    
 {
@@ -19,7 +26,7 @@ if(empty(($Name)&&($Password)))
 	header("Location: firstpage.html"); 
 exit;
 }
-$sql = "SELECT `password` FROM `teachers` WHERE `name`=\"".$Name."\" AND `password`=\"".$Password."\"";
+$sql = "SELECT `password` FROM `teachers` WHERE `name`=\"".$Name."\" AND `password`=\"".$Password."\" AND `department`=\"".$Department."\"";
 $records=mysqli_query($con,$sql);
 $rec=mysqli_fetch_assoc($records);
   
@@ -33,6 +40,11 @@ if($rec>0)
     header("Location: attendencepage.php"); 
    exit;
 
+}
+else
+{
+	header("Location: firstpage.php"); 
+   exit;
 }
 
 ?>

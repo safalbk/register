@@ -10,8 +10,9 @@ if(!mysqli_select_db($con,'register'))
 }
 $Name =$_POST['name'];
 $Password =$_POST['pass'];
+$department =$_POST['department'];
 
-$sql="INSERT INTO teachers (name,password) VALUES ('$Name','$Password')";
+$sql="INSERT INTO teachers (name,password,department) VALUES ('$Name','$Password','$department')";
 if(!mysqli_query($con,$sql))
 {
 	echo 'not inserted';
@@ -21,5 +22,5 @@ else
 {
 	echo 'inserted';
 }
-header("refresh:2; url=teacheradd.html");
+header("refresh:2; url=teacheradd.php");
 ?>

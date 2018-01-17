@@ -69,5 +69,8 @@ $xx++;
                   </tbody>
 </table>
 </form>
+<br>
+	    <a href="edit.html">ACCOUNT SETTINGS</a>
+
 </body>
 </html>

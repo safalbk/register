@@ -67,11 +67,13 @@ input[type=submit] {
 <?php
 $Option =$_POST['options'];
 $Data =$_POST['data'];
-$sql = "SELECT * FROM `students` WHERE `$Option`=\"".$Data."\"";
+$department =$_POST['department'];
+$sem =$_POST['sem'];
+$sql = "SELECT * FROM `students` WHERE `$Option`=\"".$Data."\" AND `sem`=\"".$sem."\" AND `department`=\"".$department."\"";
 $records=mysqli_query($con,$sql);
 $details=mysqli_fetch_assoc($records);
 
-if($Data==NULL)
+if($details>0)
 {
 	echo "data is null";
 }

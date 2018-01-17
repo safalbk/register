@@ -1,9 +1,20 @@
+<?php
+$con =mysqli_connect('127.0.0.1','root','');
+if(!$con)
+{
+   echo 'not connected to server';	
+}
+if(!mysqli_select_db($con,'register'))
+{
+	echo 'database not selected';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
 <style> 
 body {
-    background-color: lightblue;
+    background-color: red;
 }
 input[type=text] {
     width: 100%;
@@ -45,6 +56,22 @@ input[type=submit] {
   <input type="text" id="name" name="name">
 <br>
 <br>
+  <label for="department">DEPARTMENT</label>
+  <select name="department"> 
+ <?php
+  $sql = "SELECT * FROM `department`  ";
+$records=mysqli_query($con,$sql);
+	
+	while($details=mysqli_fetch_assoc($records)){
+		$x=1;
+echo "<option value=".$details['department'].">".$details['department']."</option> ";
+
+
+	
+	}	
+	
+  ?>
+</select>
   <label for="password">Password</label>
 <input type="password" name="password">
 <input type="submit" value="Submit">

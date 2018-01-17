@@ -42,7 +42,22 @@ input[type=submit] {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAME:
 <input type="text" name="name"  />
 <br>
+  <label for="department">DEPARTMENT</label>
+  <select name="department"> 
+ <?php
+  $sql = "SELECT * FROM `department` ";
+$records=mysqli_query($con,$sql);
+	
+	while($details=mysqli_fetch_assoc($records)){
+		$x=1;
+echo "<option value=".$details['department'].">".$details['department']."</option> ";
 
+
+	
+	}	
+	
+  ?>
+</select>
 <br>
 PASSWORD:<input type="password" name="pass"  />
 <br>
@@ -50,7 +65,7 @@ PASSWORD:<input type="password" name="pass"  />
 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
 <input type="submit" name="formSubmit" value="Submit" />
 <br>
-	    <a href="http://localhost:8080/register/edit.html">ACCOUNT SETTINGS</a>
+	    <a href="edit.html">ACCOUNT SETTINGS</a>
 
 </form>
 </body> 

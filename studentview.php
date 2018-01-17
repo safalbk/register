@@ -48,7 +48,9 @@ input[type=submit] {
 </head>
 <body>
 <form action="cal.php" method="post">
-  
+   <b> <label for="regno">REGNO</label> </b>
+<br>
+  <input type="text" id="regno" name="regno">
   <br>
   <label for="department">DEPARTMENT</label>
   <select name="department"> 
@@ -56,13 +58,10 @@ input[type=submit] {
   $sql = "SELECT * FROM `department` ";
 $records=mysqli_query($con,$sql);
 	
-	while($details=mysqli_fetch_assoc($records)){
-	
-echo "<option value=".$details['department'].">".$details['department']."</option> ";
-
-
-	
-	}	
+	while($details=mysqli_fetch_assoc($records))
+{
+	echo "<option value=".$details['department'].">".$details['department']."</option> ";
+}	
 	
   ?>
 </select>
@@ -87,7 +86,7 @@ SELECT MONTH AND YEAR<br>
 <br>
 <input type="submit" value="Submit">
 <br>
-	    <a href="http://localhost:8080/register/edit.html">ACCOUNT SETTINGS</a>
+	    <a href="firstpage.php"> HOME</a>
 
 </form>
 

@@ -1,8 +1,6 @@
 <?php  
 session_start();
- $Department = $_SESSION['department'] ;
-  $Sem = $_SESSION['sem'] ;
-   $Period = $_SESSION['period'] ;
+
 $conn = new mysqli('localhost', 'root', '');  
 mysqli_select_db($conn, 'register');  
   

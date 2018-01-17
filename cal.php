@@ -16,6 +16,7 @@ $option = isset($_POST['department']) ? $_POST['department'] : false;
 	  $Deparment=$_POST['department'];
 	  	  $Sem=$_POST['sem'];
 	  	  $Smonth=$_POST['smonth'];
+		   $Regno=$_POST['regno'];
 
 $submit=1;
    } else {
@@ -41,20 +42,20 @@ $records=mysqli_query($con,$sql5);
                         <tr>
                             <th>ROLL NO</th>
                             <th>NAME</th>
-							<th>ATTENDENCE REGISTER</th>
+							<th>ATTENDENCE PERCENT</th>
 						</tr>
                     </thead>
                    <tbody>
 <?php
 
  $tper=0;
- $sql = "SELECT * FROM `students` WHERE  `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\"";
+ $sql = "SELECT * FROM `students` WHERE  `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\" AND `regno`=\"".$Regno."\"";
 $records=mysqli_query($con,$sql);
      
 
 	while($details=mysqli_fetch_assoc($records))
 	{
-$sql2 = "SELECT * FROM `attendence` WHERE   `datetime` LIKE \"".$Smonth."\" '%' AND `name` = \"".$details['name']."\" AND `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\"";
+$sql2 = "SELECT * FROM `attendence` WHERE   `datetime` LIKE \"".$Smonth."\" '%' AND `name` = \"".$details['name']."\" AND `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\" AND `regnno`=\"".$Regno."\"";
 $records2=mysqli_query($con,$sql2);
      $stack = array();
 	$num=0;
@@ -78,7 +79,10 @@ $tper=0;
 	 $num=$num+1;
 	 
 	}
-
+if($num==0)
+{
+	$num=1;
+}
 $tper=($tper/($num*100))*100;
 $rr=$details['rollno'];
 $nn=$details['name'];
@@ -91,12 +95,18 @@ echo '<td>'.$details['name'].'</td>';
 echo '<td>'.$tper."%".'</td>';
 echo '</tr>';
 }
+ session_start();
+ $_SESSION['department']=$Deparment ;
+	   $_SESSION['sem']=	  $Sem;
+	   $_SESSION['smonth']=	  $Smonth;
+		 $_SESSION['regno']=   $Regno;
  ?>
-     <a href="http://localhost:8080/register/firstpage.html"> HOME</a>
+     <a href="firstpage.php"> HOME</a>
 <br><br>
 
-    <a href="http://localhost:8080/register/exportattendence.php">EXPORT TO EXCEL</a>
- 
+ <br>
+      <a href="fpdf/pdfexport.php"> DOWNLOAD PDF</a>
+
  </tbody>
 </table>
 </form>
