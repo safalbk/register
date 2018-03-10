@@ -3,7 +3,7 @@ session_start();
 $Deparment =$_SESSION['department'] ;
 	   	  $Sem=$_SESSION['sem'];
 	    $Smonth= $_SESSION['smonth']	;
-		  $Regno= $_SESSION['regno'];
+	
 		
  require("fpdf.php");
     
@@ -38,14 +38,15 @@ $records=mysqli_query($con,$sql5);
 
 
 
+
  $tper=0;
- $sql = "SELECT * FROM `students` WHERE  `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\" AND `regno`=\"".$Regno."\"";
+ $sql = "SELECT * FROM `students` WHERE  `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\"";
 $records=mysqli_query($con,$sql);
      
 
 	while($details=mysqli_fetch_assoc($records))
 	{
-$sql2 = "SELECT * FROM `attendence` WHERE `datetime` LIKE \"".$Smonth."\" '%' AND `name` = \"".$details['name']."\" AND `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\" AND `regnno`=\"".$Regno."\"";
+$sql2 = "SELECT * FROM `attendence` WHERE   `datetime` LIKE \"".$Smonth."\" '%' AND `name` = \"".$details['name']."\" AND `department`=\"".$Deparment."\" AND `sem`=\"".$Sem."\"";
 $records2=mysqli_query($con,$sql2);
      $stack = array();
 	$num=0;
@@ -69,24 +70,31 @@ $tper=0;
 	 $num=$num+1;
 	 
 	}
-
+if($num==0)
+{
+	$num=1;
+}
 $tper=($tper/($num*100))*100;
 $rr=$details['rollno'];
 $nn=$details['name'];
 $sql5="INSERT INTO export (rollno,name,percent) VALUES ('$rr','$nn','$tper')";
 $dada=mysqli_query($con,$sql5);
 
+	$pdf->Cell(60,10, $details['rollno'],1,0);
+    $pdf->Cell(60,10, $details['name'],1,0);
+   $pdf->Cell(60,10, $tper,1,1);
+}
+ 
+
 	/*echo $details['rollno'];
 		echo $details['name'];
 echo $tper;*/
-    $pdf->Cell(60,10, $details['rollno'],1,0);
-    $pdf->Cell(60,10, $details['name'],1,0);
-    $pdf->Cell(60,10, $tper,1,1);
+   
 
 
    
-	}
-	   $pdf->Output();
+	//}
+	  $pdf->Output();
 
  ?>
  

@@ -73,7 +73,9 @@ echo "<option value=".$details['department'].">".$details['department']."</optio
 
 
 	
-	}	
+	}
+ session_start();
+ $_SESSION['tname']="admin"  ;	
 	
   ?>
 </select>

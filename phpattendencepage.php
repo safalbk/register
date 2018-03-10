@@ -25,14 +25,27 @@ $result=mysqli_query($con,$sql2);
 $details=mysqli_fetch_array($result);
 	$atname = $_POST['atname'];
 
-
-//...............................................if starts.................................................
 if(!($details>0))
+{
+	$sql3 = "SELECT `rollno`,`name`, `regno` FROM `students` WHERE  `department` =\"".$Department."\" AND `sem`=\"".$Sem."\"";
+  $rr=mysqli_query($con,$sql3);
+  	while($det=mysqli_fetch_assoc($rr))
+	{
+	$sql9 ="INSERT INTO `attendence` (`rollno`,`regnno`, `name`,  `department`, `sem`, `datetime`) VALUES (\"".$det['rollno']."\", \"".$det['regno']."\", \"".$det['name']."\", \"".$Department."\", \"".$Sem."\",\"".$Date."\")";    
+mysqli_query($con,$sql9);
+  
+
+	
+	}
+}
+//...............................................if starts.................................................
+//if(!($details>0))
+if(0)
 {
 	$atname = $_POST['atname'];
   if(empty($atname))
 {
- header("refresh:2; url=attendencepage.php");
+ header("refresh:1; url=attendencepage.php");
   exit;
 }
 $N = count($atname);

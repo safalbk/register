@@ -90,8 +90,8 @@ echo "<option value=".$details['department'].">".$details['department']."</optio
 </b> <input type="password" name="password">
 
 <input type="submit" value="Submit">
-<p><a href="studentview.php">STUDENT VIEW</a></p>
-<p><a href="admin.php">ADMIN</a></p>
+<p><a href="studentview.php">STUDENT LOG IN</a></p>
+<p><a href="admin.php">ADMIN LOG IN</a></p>
 
 
 </form>

@@ -104,7 +104,7 @@ echo '</tr>';
 <br><br>
 
  <br>
-      <a href="fpdf/pdfexport.php"> DOWNLOAD PDF</a>
+      <a href="fpdf/pdfadminmonthexport.php"> DOWNLOAD PDF</a>
 
  </tbody>
 </table>
