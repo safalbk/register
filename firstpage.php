@@ -14,7 +14,9 @@ if(!mysqli_select_db($con,'register'))
 <head>
 <style> 
 body {
-    background-color: lightblue;
+	
+	   background-color: lightblue;
+ 
 }
 option {
     width: 50%;
@@ -90,6 +92,9 @@ echo "<option value=".$details['department'].">".$details['department']."</optio
 </b> <input type="password" name="password">
 
 <input type="submit" value="Submit">
+
+
+
 <p><a href="studentview.php">STUDENT LOG IN</a></p>
 <p><a href="admin.php">ADMIN LOG IN</a></p>
 

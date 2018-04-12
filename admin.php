@@ -17,7 +17,7 @@ body {
     background-color: lightblue;
 }
 input[type=text] {
-    width: 100%;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -25,7 +25,7 @@ input[type=text] {
     border-radius: 4px;
 }
 input[type=password] {
-    width: 100%;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -34,7 +34,7 @@ input[type=password] {
 }
 
 input[type=submit] {
-    width: 100%;
+    width: 50%;
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -52,12 +52,11 @@ input[type=submit] {
 <p>ADMINISTRATOR LOGIN</p>
 
 <form action="phpadmin.php" method="post">
-  <label for="name"> Name</label>
-  <input type="text" id="name" name="name">
-<br>
-<br>
+  <label for="name"> Name</label><br>
+  <input type="text" id="name" name="name"><br>
+
  
-  <label for="password">Password</label>
+  <label for="password">Password</label><br>
 <input type="password" name="password">
 <input type="submit" value="Submit">
 <p><a href="firstpage.php"> BACK</a></p>
